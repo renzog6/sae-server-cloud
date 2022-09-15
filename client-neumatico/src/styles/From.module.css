@@ -1,0 +1,50 @@
+.gridinputs {
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 7rem;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+}
+
+.buttonRed {
+  font-size: 15px;
+  font-family: Arial;
+  /*width: 140px;*/
+  height: 50px;
+  border-width: 1px;
+  color: #ffffff;
+  border-color: #d83526;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: inset 0px 1px 0px 0px #f29c93;
+  text-shadow: inset 0px 1px 0px #b23e35;
+  background: linear-gradient(#fe1a00, #ce0100);
+}
+
+.buttonRed:hover {
+  background: linear-gradient(#ce0100, #fe1a00);
+}
+
+.buttonGreen {
+  font-size: 15px;
+  font-family: Arial;
+  /*width: 140px;*/
+  height: 50px;
+  border-width: 1px;
+  color: #ffffff;
+  border-color: #74b807;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: inset 0px 1px 0px 0px #a4e271;
+  text-shadow: inset 0px 1px 0px #528009;
+  background: linear-gradient(#89c403, #77a809);
+}
+
+.buttonGreen:hover {
+  background: linear-gradient(#77a809, #89c403);
+}
