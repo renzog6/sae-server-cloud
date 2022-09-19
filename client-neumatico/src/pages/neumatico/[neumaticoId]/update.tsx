@@ -3,7 +3,6 @@ import Update from "../../../components/neumatico/Update";
 import { neumaticoService } from "../../../services/neumatico.service";
 
 export default function UpdateNeumatico({ neumatico }) {
-  console.log(neumatico);
   return (
     <>
       <Head>
@@ -15,9 +14,7 @@ export default function UpdateNeumatico({ neumatico }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const response = await neumaticoService.getById(params.neumaticoId);
-  let neumatico = null;
-  if (response.ok) neumatico = await response.json();
+  const neumatico = await neumaticoService.getById(+params.neumaticoId);
 
   return {
     props: {

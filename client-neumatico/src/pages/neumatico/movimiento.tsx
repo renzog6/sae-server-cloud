@@ -1,15 +1,15 @@
 import React from "react";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
-import ListAllNeumaticos from "../../components/neumatico/ListAll";
+import ListAllMovimientos from "../../components/neumatico/ListAllMovimientos";
 
-export default function HomeNeumatico() {
+export default function Movimiento() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>SAE - Home Neumaticos</title>
+        <title>SAE - Movimientos Neumaticos</title>
       </Head>
-      <ListAllNeumaticos />
+      <ListAllMovimientos />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Create from "../../components/neumatico/Create";
+import { marcaService } from "../../services/marca.service";
 
 export default function CreateNeumatico({ marcas }) {
   return (
@@ -13,8 +14,7 @@ export default function CreateNeumatico({ marcas }) {
 }
 
 export async function getServerSideProps() {
-  const resopnse = await fetch("http://192.168.88.91:8091/marcas");
-  const marcas = await resopnse.json();
+  const marcas = await marcaService.getAll();
   return {
     props: {
       marcas,

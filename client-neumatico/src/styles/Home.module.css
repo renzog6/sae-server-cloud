@@ -201,9 +201,38 @@
   text-align: center;
 }
 
-.tdButtons {
-  text-align: center;
+.tdStock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 120px;
+  height: 50px;
 }
 .trHeard {
   justify-content: center;
+}
+
+.buttonUpdate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-family: Arial;
+  width: 30px;
+  height: 30px;
+  border-width: 1px;
+  color: #333333;
+  border-color: #ffaa22;
+  font-weight: bold;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  box-shadow: 0px 1px 0px 0px #fff6af;
+  text-shadow: 0px 1px 0px #ffee66;
+  background: linear-gradient(#ffec64, #ffab23);
+}
+
+.buttonUpdate:hover {
+  background: linear-gradient(#ffab23, #ffec64);
 }

@@ -11,18 +11,18 @@ import { useForm } from "react-hook-form";
 import { Marca } from "../../interfaces/Marca";
 import { Neumatico } from "../../interfaces/Neumatico";
 import { neumaticoService } from "../../services/neumatico.service";
+import { marcaService } from "../../services/marca.service";
 
 export default function Update({ neumatico }) {
   const router = useRouter();
-  if (neumatico === null) router.push("./stock");
+  if (neumatico === null) router.push("/neumatico");
 
   const [marcas, setMarcas] = useState([]);
 
   useEffect(() => {
     const getAllMarcas = async () => {
-      const resopnse = await fetch("http://192.168.88.91:8091/marcas");
-      const res = await resopnse.json();
-      setMarcas(res);
+      const result = await marcaService.getAll();
+      setMarcas(result);
     };
     getAllMarcas();
   }, []);
@@ -68,7 +68,7 @@ export default function Update({ neumatico }) {
     if (response.status === 400) {
       toast.error("An 400 error occurred while saving, please try again");
     } else if (response.ok) {
-      toast.success("BARRADO con Exito!!!");
+      toast.success("BORRADO con Exito!!!");
       router.push("/neumatico");
     } else {
       toast.error(
@@ -76,21 +76,6 @@ export default function Update({ neumatico }) {
       );
     }
   };
-
-  /*   const handleResponse = async ({ response }) => {
-    if (response.status === 400) {
-      toast.error(
-        "An unexpected error occurred while saving, please try again"
-      );
-    } else if (response.ok) {
-      toast.success("Actualizado con Exito!!!");
-      router.push("./stock");
-    } else {
-      toast.error(
-        "An unexpected error occurred while saving, please try again"
-      );
-    }
-  }; */
 
   return (
     <div className={styles.container}>
