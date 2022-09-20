@@ -1,3 +1,6 @@
 [submodule "client-neumatico"]
 	path = client-neumatico
 	url = https://github.com/renzog6/client-neumatico.git
+[submodule "service-neumatico"]
+	path = service-neumatico
+	url = https://github.com/renzog6/service-neumatico.git
