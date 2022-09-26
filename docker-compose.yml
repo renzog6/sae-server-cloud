@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+
+  sae-mysql:
+    container_name: sae-mysql
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sae_neumatico
+      MYSQL_USER: saedb
+      MYSQL_PASSWORD: resconi.843
+    volumes:
+      - ./mysql-config/mysql-data:/var/lib/mysql
+      - ./mysql-config/init:/docker-entrypoint-initdb.d
+    ports:
+      - 3307:3306
+    networks:
+      - spring-cloud-network
+
+  service-neumatico:
+    container_name: service-neumatico
+    image: service-neumatico:latest
+    build:
+      context: ./service-neumatico
+      dockerfile: Dockerfile
+    ports:
+      - 8091:8091
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://sae-mysql:3306/sae_neumatico?autoReconnect=true&useSSL=false
+    depends_on:
+      - sae-mysql
+    networks:
+      - spring-cloud-network
+
+  client-neumatico:
+    container_name: client-neumatico
+    image: client-neumatico:latest
+    build:
+      context: ./client-neumatico
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    depends_on:
+      - service-neumatico
+    networks:
+      spring-cloud-network:
+        aliases:
+          - alias-client-neumatico
+
+  nginx-server:
+    container_name: nginx-server
+    image: nginx:latest
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    depends_on:
+      - client-neumatico
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
+    driver: bridge
