@@ -13,8 +13,8 @@ services:
       MYSQL_USER: saedb
       MYSQL_PASSWORD: resconi.843
     volumes:
-      - ./mysql-config/mysql-data:/var/lib/mysql
-      - ./mysql-config/init:/docker-entrypoint-initdb.d
+      - ./mysql/mysql-data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
     ports:
       - 3307:3306
     networks:
