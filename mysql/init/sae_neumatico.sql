@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 07/10/2022 19:11:28
+ Date: 20/10/2022 18:58:30
 */
 
 SET NAMES utf8mb4;
@@ -128,8 +128,8 @@ INSERT INTO `marca` VALUES (14, 'Yokohama', NULL);
 DROP TABLE IF EXISTS `medida`;
 CREATE TABLE `medida`  (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `alt` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  `name` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  `alt` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `info` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
@@ -137,56 +137,56 @@ CREATE TABLE `medida`  (
 -- ----------------------------
 -- Records of medida
 -- ----------------------------
-INSERT INTO `medida` VALUES (1, '295 / 80 R', NULL, 'Camiones');
-INSERT INTO `medida` VALUES (2, '255 / 50 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (3, '285 / 45 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (4, '255 / 50 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (5, '315 / 35 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (6, '275 / 20 R', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (1, '295 / 80 R22,5', NULL, 'Camiones');
+INSERT INTO `medida` VALUES (2, '255 / 50 R17', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (3, '285 / 45 R19', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (4, '255 / 50 R19', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (5, '315 / 35 R20', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (6, '275 / 20 R20', NULL, 'Camioneta');
 INSERT INTO `medida` VALUES (7, '265/75 R16', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (8, '215 / 80 R', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (8, '215 / 80 R16', NULL, 'Camioneta');
 INSERT INTO `medida` VALUES (9, '235 R15', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (10, '265 / 65 R', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (10, '265 / 65 R17', NULL, 'Camioneta');
 INSERT INTO `medida` VALUES (11, '205 R16', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (12, '245 / 70 R', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (12, '245 / 70 R16', NULL, 'Camioneta');
 INSERT INTO `medida` VALUES (13, '9-50-8', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (14, '16.5L-16.1', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (15, '445 / 50R ', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (16, '14.00 - 24', NULL, 'Desencontrada');
-INSERT INTO `medida` VALUES (17, '11L - 15 S', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (14, '16.5L-16.1 SL', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (15, '445 / 50R 22.5', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (16, '14.00 - 24 TG', NULL, 'Desencontrada');
+INSERT INTO `medida` VALUES (17, '11L - 15 SL', NULL, 'Sembradora');
 INSERT INTO `medida` VALUES (18, '265/70 R15', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (19, '380 / 90 R', NULL, 'Pulverizador');
-INSERT INTO `medida` VALUES (20, '400 / 55 2', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (21, '620 / 70 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (22, '480 / 70 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (23, ' 18 - 4 - ', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (24, '600 / 70 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (25, '520 / 85 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (26, ' 440 / 80 ', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (27, ' 420 / 90 ', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (28, ' 420 / 90 ', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (29, '11L - 15 S', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (30, '31 x 13,5 ', NULL, 'Sembradora');
-INSERT INTO `medida` VALUES (31, '16.9 / 14 ', NULL, 'Rome');
-INSERT INTO `medida` VALUES (32, '14.00 - 24', NULL, 'Motoniveladora');
-INSERT INTO `medida` VALUES (33, '9.5 / 9 - ', NULL, 'Motoniveladora');
+INSERT INTO `medida` VALUES (19, '380 / 90 R46 ( 14.9 ', NULL, 'Pulverizador');
+INSERT INTO `medida` VALUES (20, '400 / 55 22.5', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (21, '620 / 70 R42', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (22, '480 / 70 R30', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (23, ' 18 - 4 - 34', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (24, '600 / 70 R30', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (25, '520 / 85 R42 ( 20.8 ', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (26, ' 440 / 80 R26 ( 16.9', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (27, ' 420 / 90 R30 ( 16.9', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (28, ' 420 / 90 R30 ( 16.9', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (29, '11L - 15 SD', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (30, '31 x 13,5 x 15', NULL, 'Sembradora');
+INSERT INTO `medida` VALUES (31, '16.9 / 14 - 24 ', NULL, 'Rome');
+INSERT INTO `medida` VALUES (32, '14.00 - 24 TG', NULL, 'Motoniveladora');
+INSERT INTO `medida` VALUES (33, '9.5 / 9 - 24', NULL, 'Motoniveladora');
 INSERT INTO `medida` VALUES (34, '14.00 - 24', NULL, 'Rolo Triturador');
 INSERT INTO `medida` VALUES (35, '185 R14', NULL, 'Carros');
-INSERT INTO `medida` VALUES (36, '520 / 85 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (37, '225 / 70 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (38, '24 x 5 x 3', NULL, 'Cosechadora');
-INSERT INTO `medida` VALUES (39, '245 / 70 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (40, '600 / 70 R', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (36, '520 / 85 R38 ( 20.8 ', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (37, '225 / 70 R17', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (38, '24 x 5 x 32', NULL, 'Cosechadora');
+INSERT INTO `medida` VALUES (39, '245 / 70 R17', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (40, '600 / 70 R30', NULL, 'Tractor');
 INSERT INTO `medida` VALUES (41, '1000 x 16', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (42, '23 x 1 x 3', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (42, '23 x 1 x 30', NULL, 'Tractor');
 INSERT INTO `medida` VALUES (43, '28L - 26', NULL, 'Cosechadora');
-INSERT INTO `medida` VALUES (44, '520 / 85 R', NULL, 'Cosechadora');
-INSERT INTO `medida` VALUES (45, '620 / 70 R', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (46, '285 / 70 R', NULL, 'Camioneta');
-INSERT INTO `medida` VALUES (47, '255/70 R22', NULL, 'Carreton');
-INSERT INTO `medida` VALUES (48, '275/70 R22', NULL, 'Carreton');
-INSERT INTO `medida` VALUES (49, '14.0 / 9 -', NULL, 'Tractor');
-INSERT INTO `medida` VALUES (50, ' 420 / 90 ', NULL, 'Tactor');
+INSERT INTO `medida` VALUES (44, '520 / 85 R42 ( 20.8 ', NULL, 'Cosechadora');
+INSERT INTO `medida` VALUES (45, '620 / 70 R46', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (46, '285 / 70 R17', NULL, 'Camioneta');
+INSERT INTO `medida` VALUES (47, '255/70 R22.5', NULL, 'Carreton');
+INSERT INTO `medida` VALUES (48, '275/70 R22.5', NULL, 'Carreton');
+INSERT INTO `medida` VALUES (49, '14.0 / 9 - 26', NULL, 'Tractor');
+INSERT INTO `medida` VALUES (50, ' 420 / 90 R30 ( 16.9', NULL, 'Tactor');
 
 -- ----------------------------
 -- Table structure for movimiento
@@ -237,23 +237,29 @@ CREATE TABLE `neumatico`  (
   `estado` enum('Nuevo','Usado','Retacado','Baja') CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT 'Nuevo',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_neumatico_marca`(`marca_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of neumatico
 -- ----------------------------
-INSERT INTO `neumatico` VALUES (15, 'CamionX', 14, 6, 'H/TX', 'AtrasX', 10, 'XXX', '2022-10-07 19:01:24', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (18, 'Camion XS', 3, 3, 'H/T', 'Atras', 5, 'XS', '2022-10-07 19:00:57', 2, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (15, 'XS21', 1, 3, 'H/TX', 'AtrasX', 10, 'XXX', '2022-10-20 16:44:20', 3, 'Direccional', 'Usado');
+INSERT INTO `neumatico` VALUES (18, 'XS', 2, 3, 'H/T', 'Atras', 5, 'XS', '2022-10-20 16:44:31', 3, 'Direccional', 'Usado');
 INSERT INTO `neumatico` VALUES (19, 'Camion', 1, 5, 'H/T', 'Atras', 2, NULL, '2022-10-06 18:32:22', 2, 'Direccional', 'Nuevo');
-INSERT INTO `neumatico` VALUES (22, 'Camion', 1, 3, 'H/T', 'Atras', 10, NULL, '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (22, 'Camion', 5, 3, 'H/T', 'Atras', 10, NULL, '2022-10-20 16:44:33', 2, 'Mixto', 'Retacado');
 INSERT INTO `neumatico` VALUES (27, 'Camion', 1, 5, 'H/T', 'Atras', 8, NULL, '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (33, 'Camioneta', 1, 14, 'TT', 'Adelante atras', 5, NULL, '2022-10-06 18:32:22', 2, 'Traccion', 'Nuevo');
-INSERT INTO `neumatico` VALUES (34, 'Camioneta', 1, 12, 'TT', 'Adelante atras', 2, NULL, '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (36, 'Sembradora', 1, 6, 'H/T X', 'Adelante', 0, 'DB Grano Fino', '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (39, 'Camioneta', 1, 5, 'TT', 'AtrasX', 5, 'QW', '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (33, 'DE23', 5, 5, 'TT', 'Adelante atras', 5, NULL, '2022-10-20 16:44:37', 1, 'Mixto', 'Retacado');
+INSERT INTO `neumatico` VALUES (34, 'Camioneta', 1, 12, 'TT', 'Adelante atras', 2, NULL, '2022-10-20 17:16:11', 2, 'Mixto', 'Baja');
+INSERT INTO `neumatico` VALUES (36, 'SE', 1, 6, 'H/T X', 'Adelante', 0, 'DB Grano Fino', '2022-10-19 16:54:20', 2, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (39, 'Camioneta', 1, 5, 'TT', 'AtrasX', 5, 'QW', '2022-10-19 09:21:44', 2, 'Mixto', 'Nuevo');
 INSERT INTO `neumatico` VALUES (40, 'Auto', 1, 14, 'RES', 'Atras', 10, 'X', '2022-10-06 18:32:22', 2, 'Direccional', 'Nuevo');
 INSERT INTO `neumatico` VALUES (43, 'Camion', 1, 9, 'www', 'yyyy', 56, NULL, '2022-10-06 18:32:22', 2, 'Traccion', 'Nuevo');
-INSERT INTO `neumatico` VALUES (44, 'Camion', 1, 9, 'www', 'yyyy', 56, NULL, '2022-10-06 18:32:22', 2, 'Traccion', 'Nuevo');
+INSERT INTO `neumatico` VALUES (44, 'Camion', 1, 9, 'www', 'yyyy', 56, NULL, '2022-10-19 09:21:48', 2, 'Traccion', 'Nuevo');
+INSERT INTO `neumatico` VALUES (45, 'FA10', 1, 6, 'TT', NULL, NULL, 'X', '2022-10-20 16:44:23', 1, 'Mixto', 'Usado');
+INSERT INTO `neumatico` VALUES (46, 'rueda-02', 1, 9, 'TT', NULL, NULL, 'XR', '2022-10-20 16:44:26', 1, 'Direccional', 'Retacado');
+INSERT INTO `neumatico` VALUES (47, NULL, 1, 2, 'H/T', NULL, NULL, '', '2022-10-20 11:08:07', 1, 'Traccion', 'Nuevo');
+INSERT INTO `neumatico` VALUES (48, ' 3pP6H', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (49, ' QcXxf', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (50, ' BlKEZ', 6, 10, 'TT', NULL, NULL, '', '2022-10-20 11:40:25', 1, 'Mixto', 'Nuevo');
 
 -- ----------------------------
 -- Table structure for seguimiento
@@ -271,17 +277,5 @@ CREATE TABLE `seguimiento`  (
   `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Table structure for stock
--- ----------------------------
-DROP TABLE IF EXISTS `stock`;
-CREATE TABLE `stock`  (
-  `id` bigint(10) NOT NULL,
-  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `neumatico_id` bigint(10) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
