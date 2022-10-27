@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 20/10/2022 18:58:30
+ Date: 27/10/2022 11:27:57
 */
 
 SET NAMES utf8mb4;
@@ -45,7 +45,7 @@ CREATE TABLE `equipo`  (
   `id` bigint(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `patente` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `tipo` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  `tipo` enum('Acoplado','Camion','Camioneta','Carreton','Semirremolque','Tractor','Herramienta','Maquinaria','Otro') CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT 'Otro',
   `chofer` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `estado` tinyint(1) NULL DEFAULT 1,
@@ -237,7 +237,7 @@ CREATE TABLE `neumatico`  (
   `estado` enum('Nuevo','Usado','Retacado','Baja') CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT 'Nuevo',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_neumatico_marca`(`marca_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 51 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of neumatico
@@ -260,6 +260,7 @@ INSERT INTO `neumatico` VALUES (47, NULL, 1, 2, 'H/T', NULL, NULL, '', '2022-10-
 INSERT INTO `neumatico` VALUES (48, ' 3pP6H', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
 INSERT INTO `neumatico` VALUES (49, ' QcXxf', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
 INSERT INTO `neumatico` VALUES (50, ' BlKEZ', 6, 10, 'TT', NULL, NULL, '', '2022-10-20 11:40:25', 1, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (51, ' 1VQys', 11, 3, 'H/T', NULL, NULL, '', '2022-10-21 15:56:46', 1, 'Mixto', 'Nuevo');
 
 -- ----------------------------
 -- Table structure for seguimiento
