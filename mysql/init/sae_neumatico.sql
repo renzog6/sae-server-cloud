@@ -11,7 +11,7 @@
  Target Server Version : 100137
  File Encoding         : 65001
 
- Date: 27/10/2022 11:27:57
+ Date: 15/11/2022 19:27:41
 */
 
 SET NAMES utf8mb4;
@@ -26,16 +26,17 @@ CREATE TABLE `deposito`  (
   `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   `info` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of deposito
 -- ----------------------------
-INSERT INTO `deposito` VALUES (1, 'Planta VM', 'Planta de Silos VM');
-INSERT INTO `deposito` VALUES (2, 'En Retacado', 'En Reparacion');
-INSERT INTO `deposito` VALUES (3, 'En Uso', 'En Uso en Equipo');
-INSERT INTO `deposito` VALUES (4, 'Baja', 'Sin uso / Descartados');
-INSERT INTO `deposito` VALUES (5, 'Otro', 'Nose');
+INSERT INTO `deposito` VALUES (1, 'General', 'Planta de Silos / Etc');
+INSERT INTO `deposito` VALUES (2, 'En Uso', 'En Uso en Equipo');
+INSERT INTO `deposito` VALUES (3, 'Para Retacar', 'Para Retacar');
+INSERT INTO `deposito` VALUES (4, 'En Retacado', 'En Retacado');
+INSERT INTO `deposito` VALUES (5, 'Baja', 'Sin uso / Descartados');
+INSERT INTO `deposito` VALUES (6, 'Otro', 'Nose');
 
 -- ----------------------------
 -- Table structure for equipo
@@ -92,6 +93,30 @@ INSERT INTO `equipo` VALUES (34, 'Eq.34', 'AA459DH', 'Semirremolque', 'Chofer-Eq
 INSERT INTO `equipo` VALUES (35, 'Eq.35', 'AA459DI', 'Semirremolque', 'Chofer-Eq.35', 'Aiello-2016-SR-310--8A9G1203SGA100051-', 1);
 INSERT INTO `equipo` VALUES (36, 'Eq.36', 'AA459DJ', 'Semirremolque', 'Chofer-Eq.36', 'Aiello-2016-SR-310--8A9G1203SGA100049-', 1);
 INSERT INTO `equipo` VALUES (37, 'Eq.37', 'AD655MI', 'Semirremolque', 'Chofer-Eq.37', 'Aiello-2019-SR-310--8A9G136SKA100044--', 1);
+
+-- ----------------------------
+-- Table structure for instalado
+-- ----------------------------
+DROP TABLE IF EXISTS `instalado`;
+CREATE TABLE `instalado`  (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `fecha` date NULL DEFAULT NULL,
+  `equipo_id` bigint(20) NULL DEFAULT NULL,
+  `neumatico_id` bigint(20) NULL DEFAULT NULL,
+  `posicion` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of instalado
+-- ----------------------------
+INSERT INTO `instalado` VALUES (15, '2022-11-15', 9, 27, 'A01', '');
+INSERT INTO `instalado` VALUES (16, '2022-11-15', 9, 43, 'B01', '');
+INSERT INTO `instalado` VALUES (17, '2022-11-15', 9, 34, 'A02', '');
+INSERT INTO `instalado` VALUES (18, '2022-11-15', 9, 46, 'B04', '');
+INSERT INTO `instalado` VALUES (19, '2022-11-15', 9, 84, 'A05', '');
+INSERT INTO `instalado` VALUES (20, '2022-11-15', 10, 47, 'B04', '');
 
 -- ----------------------------
 -- Table structure for marca
@@ -228,39 +253,69 @@ CREATE TABLE `neumatico`  (
   `medida_id` bigint(10) NULL DEFAULT NULL,
   `marca_id` bigint(10) NULL DEFAULT NULL,
   `modelo` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `posicion` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `stock` int(100) NULL DEFAULT 0,
   `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT NULL,
-  `update_at` datetime(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
-  `deposito_id` bigint(10) NULL DEFAULT NULL,
   `uso` enum('Mixto','Direccional','Traccion') CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT 'Mixto',
   `estado` enum('Nuevo','Usado','Retacado','Baja') CHARACTER SET utf8 COLLATE utf8_spanish_ci NULL DEFAULT 'Nuevo',
+  `deposito_id` bigint(10) NULL DEFAULT NULL,
+  `update_at` datetime(0) NULL DEFAULT NULL,
+  `create_at` datetime(0) NULL,
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `FK_neumatico_marca`(`marca_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 52 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 85 CHARACTER SET = utf8 COLLATE = utf8_spanish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of neumatico
 -- ----------------------------
-INSERT INTO `neumatico` VALUES (15, 'XS21', 1, 3, 'H/TX', 'AtrasX', 10, 'XXX', '2022-10-20 16:44:20', 3, 'Direccional', 'Usado');
-INSERT INTO `neumatico` VALUES (18, 'XS', 2, 3, 'H/T', 'Atras', 5, 'XS', '2022-10-20 16:44:31', 3, 'Direccional', 'Usado');
-INSERT INTO `neumatico` VALUES (19, 'Camion', 1, 5, 'H/T', 'Atras', 2, NULL, '2022-10-06 18:32:22', 2, 'Direccional', 'Nuevo');
-INSERT INTO `neumatico` VALUES (22, 'Camion', 5, 3, 'H/T', 'Atras', 10, NULL, '2022-10-20 16:44:33', 2, 'Mixto', 'Retacado');
-INSERT INTO `neumatico` VALUES (27, 'Camion', 1, 5, 'H/T', 'Atras', 8, NULL, '2022-10-06 18:32:22', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (33, 'DE23', 5, 5, 'TT', 'Adelante atras', 5, NULL, '2022-10-20 16:44:37', 1, 'Mixto', 'Retacado');
-INSERT INTO `neumatico` VALUES (34, 'Camioneta', 1, 12, 'TT', 'Adelante atras', 2, NULL, '2022-10-20 17:16:11', 2, 'Mixto', 'Baja');
-INSERT INTO `neumatico` VALUES (36, 'SE', 1, 6, 'H/T X', 'Adelante', 0, 'DB Grano Fino', '2022-10-19 16:54:20', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (39, 'Camioneta', 1, 5, 'TT', 'AtrasX', 5, 'QW', '2022-10-19 09:21:44', 2, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (40, 'Auto', 1, 14, 'RES', 'Atras', 10, 'X', '2022-10-06 18:32:22', 2, 'Direccional', 'Nuevo');
-INSERT INTO `neumatico` VALUES (43, 'Camion', 1, 9, 'www', 'yyyy', 56, NULL, '2022-10-06 18:32:22', 2, 'Traccion', 'Nuevo');
-INSERT INTO `neumatico` VALUES (44, 'Camion', 1, 9, 'www', 'yyyy', 56, NULL, '2022-10-19 09:21:48', 2, 'Traccion', 'Nuevo');
-INSERT INTO `neumatico` VALUES (45, 'FA10', 1, 6, 'TT', NULL, NULL, 'X', '2022-10-20 16:44:23', 1, 'Mixto', 'Usado');
-INSERT INTO `neumatico` VALUES (46, 'rueda-02', 1, 9, 'TT', NULL, NULL, 'XR', '2022-10-20 16:44:26', 1, 'Direccional', 'Retacado');
-INSERT INTO `neumatico` VALUES (47, NULL, 1, 2, 'H/T', NULL, NULL, '', '2022-10-20 11:08:07', 1, 'Traccion', 'Nuevo');
-INSERT INTO `neumatico` VALUES (48, ' 3pP6H', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (49, ' QcXxf', 5, 6, 'TT', NULL, NULL, '', '2022-10-20 11:19:13', 1, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (50, ' BlKEZ', 6, 10, 'TT', NULL, NULL, '', '2022-10-20 11:40:25', 1, 'Mixto', 'Nuevo');
-INSERT INTO `neumatico` VALUES (51, ' 1VQys', 11, 3, 'H/T', NULL, NULL, '', '2022-10-21 15:56:46', 1, 'Mixto', 'Nuevo');
+INSERT INTO `neumatico` VALUES (15, 'XS21', 1, 3, 'H/TX', 'XXX', 'Direccional', 'Usado', 3, '2022-10-20 16:44:20', '2022-10-20 16:44:20');
+INSERT INTO `neumatico` VALUES (18, 'XS', 2, 3, 'H/T', 'XS', 'Direccional', 'Usado', 3, '2022-10-20 16:44:31', '2022-10-20 16:44:31');
+INSERT INTO `neumatico` VALUES (22, 'Camion', 5, 3, 'H/T', NULL, 'Mixto', 'Retacado', 1, '2022-10-20 16:44:33', '2022-10-20 16:44:33');
+INSERT INTO `neumatico` VALUES (27, 'Camion', 1, 5, 'H/T', NULL, 'Mixto', 'Nuevo', 2, '2022-10-06 18:32:22', '2022-10-06 18:32:22');
+INSERT INTO `neumatico` VALUES (33, 'DE23', 5, 5, 'TT', NULL, 'Mixto', 'Retacado', 1, '2022-10-20 16:44:37', '2022-10-20 16:44:37');
+INSERT INTO `neumatico` VALUES (34, 'Camioneta', 1, 12, 'TT', NULL, 'Mixto', 'Baja', 2, '2022-10-20 17:16:11', '2022-10-20 17:16:11');
+INSERT INTO `neumatico` VALUES (36, 'SE', 1, 6, 'H/T X', 'DB Grano Fino', 'Mixto', 'Nuevo', 2, '2022-10-19 16:54:20', '2022-10-19 16:54:20');
+INSERT INTO `neumatico` VALUES (39, 'Camioneta', 1, 5, 'TT', 'QW', 'Mixto', 'Retacado', 3, '2022-11-01 18:47:42', '2022-10-19 09:21:44');
+INSERT INTO `neumatico` VALUES (40, 'Auto', 1, 14, 'RES', 'X', 'Direccional', 'Nuevo', 2, '2022-10-06 18:32:22', '2022-10-06 18:32:22');
+INSERT INTO `neumatico` VALUES (43, 'Camion', 1, 9, 'www', NULL, 'Traccion', 'Nuevo', 2, '2022-10-06 18:32:22', '2022-10-06 18:32:22');
+INSERT INTO `neumatico` VALUES (44, 'EW', 1, 9, 'XR', NULL, 'Traccion', 'Usado', 3, '2022-11-01 18:43:40', '2022-10-19 09:21:48');
+INSERT INTO `neumatico` VALUES (45, 'FA10', 1, 6, 'TT', 'X', 'Mixto', 'Usado', 2, '2022-10-20 16:44:23', '2022-10-20 16:44:23');
+INSERT INTO `neumatico` VALUES (46, 'rueda-02', 1, 9, 'TT', 'XR', 'Direccional', 'Retacado', 2, '2022-10-20 16:44:26', '2022-10-20 16:44:26');
+INSERT INTO `neumatico` VALUES (47, 'SAEAS', 1, 2, 'H/T', '', 'Traccion', 'Usado', 2, '2022-11-01 11:25:12', '2022-11-01 11:25:12');
+INSERT INTO `neumatico` VALUES (48, ' XXX3', 5, 6, 'TT', '', 'Mixto', 'Usado', 1, '2022-11-13 18:42:11', '2022-10-20 11:19:13');
+INSERT INTO `neumatico` VALUES (49, ' QcXxf', 5, 6, 'TT', '', 'Mixto', 'Nuevo', 1, '2022-10-20 11:19:13', '2022-10-20 11:19:13');
+INSERT INTO `neumatico` VALUES (50, ' BlKEZ', 6, 10, 'TT', '', 'Mixto', 'Nuevo', 1, '2022-10-20 11:40:25', '2022-10-20 11:40:25');
+INSERT INTO `neumatico` VALUES (51, ' 1VQys', 11, 3, 'H/T', '', 'Mixto', 'Nuevo', 1, '2022-10-21 15:56:46', '2022-10-21 15:56:46');
+INSERT INTO `neumatico` VALUES (52, ' Ko082', 13, 11, 'Siembra22', 'Campana', 'Mixto', 'Usado', 3, '2022-11-01 10:45:39', '2022-11-01 10:45:39');
+INSERT INTO `neumatico` VALUES (53, ' LG5S0', 13, 11, 'Siembra22', 'Campana', 'Mixto', 'Usado', 3, '2022-11-01 11:25:40', '2022-11-01 11:25:40');
+INSERT INTO `neumatico` VALUES (54, ' 7v0zI', 9, 2, 'H/T', 'Juan', 'Traccion', 'Nuevo', 1, '2022-10-10 18:28:42', '2022-10-10 18:28:42');
+INSERT INTO `neumatico` VALUES (55, ' Pepa', 9, 2, 'H/T', 'Juan', 'Traccion', 'Usado', 1, '2022-11-10 18:32:53', '2022-10-10 18:28:42');
+INSERT INTO `neumatico` VALUES (56, ' OGhSP', 1, 3, 'TT', 'Pedro', 'Mixto', 'Nuevo', 1, '2022-11-01 18:37:04', '2022-11-01 18:37:04');
+INSERT INTO `neumatico` VALUES (57, ' ZTrYB', 2, 6, 'H/T', '', 'Direccional', 'Nuevo', 1, '2022-11-01 18:38:50', '2022-11-01 18:38:50');
+INSERT INTO `neumatico` VALUES (58, ' J3fND', 8, 5, 'H/TX', '', 'Mixto', 'Nuevo', 1, '2022-11-01 18:45:43', '2022-11-01 18:41:19');
+INSERT INTO `neumatico` VALUES (59, ' ZEXDp', 16, 5, 'H/T W', '', 'Traccion', 'Nuevo', 1, '2022-11-01 18:46:52', '2022-11-01 18:46:52');
+INSERT INTO `neumatico` VALUES (60, ' BJLQE', 7, 5, 'H/TX', '', 'Mixto', 'Nuevo', 1, '2022-11-02 11:08:38', '2022-11-02 11:08:38');
+INSERT INTO `neumatico` VALUES (61, '', 6, 6, 'H/TX', '', 'Mixto', 'Nuevo', 1, '2022-11-02 11:17:56', '2022-11-02 11:17:56');
+INSERT INTO `neumatico` VALUES (62, ' 6YSSy', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (63, ' 80gV3', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (64, ' xP8ue', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (65, ' W8Jcb', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (66, ' D8q6W', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (67, ' GQ8Ev', 6, 3, 'RES', 'XZ', 'Traccion', 'Nuevo', 1, '2022-11-02 11:20:20', '2022-11-02 11:20:20');
+INSERT INTO `neumatico` VALUES (68, ' DR72E', 1, 5, 'H/T W', 'PP', 'Mixto', 'Nuevo', 1, '2022-11-02 11:26:01', '2022-11-02 11:26:01');
+INSERT INTO `neumatico` VALUES (69, ' esvd8', 1, 5, 'H/T W', 'PP', 'Mixto', 'Nuevo', 1, '2022-11-02 11:26:01', '2022-11-02 11:26:01');
+INSERT INTO `neumatico` VALUES (71, ' k3TKO', 16, 13, 'H/T W', 'PP', 'Mixto', 'Nuevo', 1, '2022-11-02 11:26:01', '2022-11-02 11:26:01');
+INSERT INTO `neumatico` VALUES (72, ' J6M6R', 19, 10, 'TT', '', 'Direccional', 'Nuevo', 1, '2022-11-02 11:30:52', '2022-11-02 11:30:52');
+INSERT INTO `neumatico` VALUES (73, ' wUtSn', 19, 10, 'TT', '', 'Direccional', 'Nuevo', 1, '2022-11-02 11:30:52', '2022-11-02 11:30:52');
+INSERT INTO `neumatico` VALUES (74, ' rMVuO', 4, 2, 'TT', 'XS', 'Traccion', 'Nuevo', 1, '2022-11-02 11:32:09', '2022-11-02 11:32:09');
+INSERT INTO `neumatico` VALUES (75, ' S311w', 4, 2, 'TT', 'XS', 'Traccion', 'Nuevo', 1, '2022-11-02 11:32:09', '2022-11-02 11:32:09');
+INSERT INTO `neumatico` VALUES (76, ' vY8AZ', 7, 3, 'H/TX', '', 'Mixto', 'Nuevo', 1, '2022-11-02 11:33:15', '2022-11-02 11:33:15');
+INSERT INTO `neumatico` VALUES (77, ' PMISK', 5, 5, 'H/T', '', 'Mixto', 'Usado', 3, '2022-11-02 11:33:38', '2022-11-02 11:33:38');
+INSERT INTO `neumatico` VALUES (78, ' zP5wn', 5, 5, 'H/T', '', 'Mixto', 'Usado', 3, '2022-11-02 11:33:38', '2022-11-02 11:33:38');
+INSERT INTO `neumatico` VALUES (79, ' aaGXl', 4, 2, 'H/T', '', 'Mixto', 'Usado', 3, '2022-11-02 11:38:41', '2022-11-02 11:38:41');
+INSERT INTO `neumatico` VALUES (80, ' rt9pm', 4, 2, 'H/T', '', 'Mixto', 'Usado', 3, '2022-11-02 11:38:41', '2022-11-02 11:38:41');
+INSERT INTO `neumatico` VALUES (81, ' C995f', 4, 2, 'H/T', '', 'Mixto', 'Usado', 3, '2022-11-02 11:38:41', '2022-11-02 11:38:41');
+INSERT INTO `neumatico` VALUES (82, ' D70mB', 3, 5, 'H/TX', '', 'Mixto', 'Nuevo', 1, '2022-11-02 11:52:26', '2022-11-02 11:52:26');
+INSERT INTO `neumatico` VALUES (83, ' dD5uq', 3, 6, 'RES', '', 'Mixto', 'Nuevo', 1, '2022-11-02 11:54:14', '2022-11-02 11:54:14');
+INSERT INTO `neumatico` VALUES (84, ' CFXyj', 1, 2, 'TT', '', 'Direccional', 'Nuevo', 2, '2022-11-08 18:26:48', '2022-11-08 18:26:48');
 
 -- ----------------------------
 -- Table structure for seguimiento
